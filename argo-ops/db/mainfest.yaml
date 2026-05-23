@@ -1,3 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: db-team
+  labels:
+    name: db-team
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
