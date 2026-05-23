@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: kub-1
-          image: shyamagarwaldev/kub-1:50c9af23b99adf93bdb556409309fb34c291dbfe
+          image: shyamagarwaldev/kub-1:8c9e2dec38dd9838dcdf05b86ca78f3932d15d2c
           env:
             - name: DATABASE_URL
               value: postgresql://postgres:postgres@db-service-clusterip.db-team.svc.cluster.local:5432/postgres
