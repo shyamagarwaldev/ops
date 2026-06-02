@@ -1,0 +1,26 @@
+global:
+  version: "0.1.0"
+
+db:
+  enable: true
+  image:
+    repository: postgres
+    tag: 16
+  replicas: 1
+  namespace: db-team
+  port: 5432
+  service:
+    port: 5432
+  secretName: db-secret
+
+backend:
+  enable: true
+  image:
+    repository: shyamagarwaldev/kub-1
+    tag: 8c9e2dec38dd9838dcdf05b86ca78f3932d15d2c
+  replicas: 2
+  namespace: backend-team
+  port: 3000
+  service:
+    port: 80
+  secretName: backend-secret
