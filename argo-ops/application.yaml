@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-ops
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/shyamagarwaldev/ops.git
+      targetRevision: main
+      path: argo-ops/chart
+      helm:
+        valueFiles:
+          - values.yaml
+    - repoURL: https://github.com/shyamagarwaldev/ops.git
+      targetRevision: main
+      path: argo-ops/sealed-secrets
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argoops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
